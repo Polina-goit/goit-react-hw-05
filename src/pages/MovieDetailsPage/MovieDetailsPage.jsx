@@ -7,7 +7,7 @@ const MovieDetailsPage = () => {
       <h2>Additional information</h2>
       <nav>
         <NavLink to="cast">Cast</NavLink>
-        <navigatorLink to="reviwes">Reviewes</navigatorLink>
+        <NavLink to="reviews">Reviewes</NavLink>
       </nav>
       <Outlet />
     </div>

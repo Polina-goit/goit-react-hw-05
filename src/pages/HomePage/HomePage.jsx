@@ -7,12 +7,12 @@ const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       const result = await fetchMovies();
       setMovies(result);
     };
 
-    fetchData();
+    getData();
   }, []);
 
   return (

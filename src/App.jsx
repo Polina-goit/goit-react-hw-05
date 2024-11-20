@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Navigation from "./components/Navigation/Navigation";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />}>
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="movies/:moviesId" element={<MovieDetailsPage />}>
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
