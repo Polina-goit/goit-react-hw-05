@@ -1,0 +1,10 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 2px solid white;
+  border-radius: 8px;
+}

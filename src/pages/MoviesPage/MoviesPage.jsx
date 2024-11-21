@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { fetchMovieSearch } from "../../assets/api";
 import MovieList from "../../components/MovieList/MovieList";
 import { Field, Form, Formik } from "formik";
+import Loader from "../../components/Loader/Loader";
 
 const MoviesPage = () => {
   const initialValues = { query: "" };
@@ -56,7 +57,7 @@ const MoviesPage = () => {
           <button type="submit">Search</button>
         </Form>
       </Formik>
-      {/* {loader && <Loader />} */}
+      {loader && <Loader />}
       <MovieList movies={searchMovies} />
     </div>
   );

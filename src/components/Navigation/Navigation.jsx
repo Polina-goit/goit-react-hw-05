@@ -1,14 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import css from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <div>
-      <nav>
+    <header>
+      <nav className={css.wrap}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/movies">Movies</NavLink>
       </nav>
-    </div>
+    </header>
   );
 };
 
