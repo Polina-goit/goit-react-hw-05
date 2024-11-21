@@ -34,6 +34,14 @@ const MovieDetailsPage = () => {
             width="350"
             height="500"
           />
+          <h3>Overview</h3>
+          <p>{movieWithId.overview}</p>
+          <h3>Genres</h3>
+          <ul>
+            {movieWithId.genres.map((genre) => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </ul>
           <nav>
             <NavLink to="cast">Cast</NavLink>
             <NavLink to="reviews">Reviewes</NavLink>
