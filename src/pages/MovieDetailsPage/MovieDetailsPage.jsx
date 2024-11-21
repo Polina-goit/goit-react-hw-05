@@ -1,15 +1,46 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { NavLink, Outlet, useParams } from "react-router-dom";
+import { fetchMovieById } from "../../assets/api";
 const MovieDetailsPage = () => {
+  const { movieId } = useParams();
+  const [movieWithId, setMovieWithID] = useState(null);
+
+  useEffect(() => {
+    const fetchMovieWithId = async () => {
+      try {
+        const movie = await fetchMovieById(movieId);
+        setMovieWithID(movie);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchMovieWithId();
+  }, [movieId]);
+
   return (
     <div>
-      <h2>Additional information</h2>
-      <nav>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Reviewes</NavLink>
-      </nav>
-      <Outlet />
+      {!movieWithId ? (
+        <p>Loading movie details...</p>
+      ) : (
+        <div>
+          <h2>{movieWithId.title}</h2>
+          <img
+            src={
+              movieWithId && movieWithId.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movieWithId.poster_path}`
+                : notFoundImage
+            }
+            alt={movieWithId.title}
+            width="350"
+            height="500"
+          />
+          <nav>
+            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="reviews">Reviewes</NavLink>
+          </nav>
+          <Outlet />
+        </div>
+      )}
     </div>
   );
 };
