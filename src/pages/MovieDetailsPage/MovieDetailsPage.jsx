@@ -28,7 +28,7 @@ const MovieDetailsPage = () => {
             src={
               movieWithId && movieWithId.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${movieWithId.poster_path}`
-                : notFoundImage
+                : "notFoundImage"
             }
             alt={movieWithId.title}
             width="350"
