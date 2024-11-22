@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from "react";
-
+import "modern-normalize";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
@@ -25,7 +25,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense>
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
