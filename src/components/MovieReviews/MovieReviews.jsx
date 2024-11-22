@@ -21,7 +21,7 @@ const MovieReviews = () => {
   return (
     <div>
       {!movieReview || movieReview.results.length === 0 ? (
-        <p>Reviews is not found</p>
+        <p>We dont't have any reviewes for this movie</p>
       ) : (
         <ul>
           {movieReview.results.map(({ id, author, content }) => (
