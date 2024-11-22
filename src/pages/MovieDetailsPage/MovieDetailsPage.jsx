@@ -18,6 +18,9 @@ const MovieDetailsPage = () => {
     };
     fetchMovieWithId();
   }, [movieId]);
+  const userScore = movieWithId
+    ? (Number(movieWithId.vote_average) * 10).toFixed(0)
+    : null;
 
   return (
     <div>
@@ -39,6 +42,13 @@ const MovieDetailsPage = () => {
             width="350"
             height="500"
           />
+          {userScore !== "0" && userScore !== null && (
+            <div>
+              <p>
+                <span>User Score:</span> {userScore}&#37;
+              </p>{" "}
+            </div>
+          )}
           <h3>Overview</h3>
           <p>{movieWithId.overview}</p>
           <h3>Genres</h3>
