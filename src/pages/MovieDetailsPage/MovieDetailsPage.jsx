@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMovieById } from "../../assets/api";
 import css from "./MovieDetailsPage.module.css";
+import Loader from "../../components/Loader/Loader";
 // import GoBackLink from "../../components/GoBackLink/GoBackLink";
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -29,7 +30,7 @@ const MovieDetailsPage = () => {
         <button className={css.LinkGoBack}>GO BACK</button>
       </Link>
       {!movieWithId ? (
-        <p>Loading movie details...</p>
+        <Loader />
       ) : (
         <div className={css.movieDetailsSection}>
           <section className={css.movieDetailsWrap}>
