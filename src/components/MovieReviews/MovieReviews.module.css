@@ -1,0 +1,26 @@
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reviewsItem {
+  background-color: azure;
+  border: 2px solid blue;
+  border-radius: 8px;
+  padding: 10px;
+}
+.reviewsAuthor {
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.reviewComment {
+  font-size: 14px;
+  font-style: italic;
+}

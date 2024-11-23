@@ -4,7 +4,7 @@ import { fetchMovieSearch } from "../../assets/api";
 import MovieList from "../../components/MovieList/MovieList";
 import { Field, Form, Formik } from "formik";
 import Loader from "../../components/Loader/Loader";
-
+import css from "./MoviesPage.module.css";
 const MoviesPage = () => {
   const initialValues = { query: "" };
   const [query, setQuery] = useState("");
@@ -46,15 +46,18 @@ const MoviesPage = () => {
   }, [request, currentPage]);
 
   return (
-    <div>
+    <div className={css.moviesPage}>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
+        <Form className={css.form}>
           <Field
+            className={css.formInput}
             type="text"
             placeholder="Enter keyword to search..."
             name="query"
           />
-          <button type="submit">Search</button>
+          <button className={css.formButton} type="submit">
+            Search
+          </button>
         </Form>
       </Formik>
       {loader && <Loader />}

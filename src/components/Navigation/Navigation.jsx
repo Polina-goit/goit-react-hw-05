@@ -4,10 +4,14 @@ import css from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <header>
-      <nav className={css.wrap}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+    <header className={css.container}>
+      <nav className={css.headerNav}>
+        <NavLink className={css.headerNavLink} to="/">
+          Home
+        </NavLink>
+        <NavLink className={css.headerNavLink} to="/movies">
+          Movies
+        </NavLink>
       </nav>
     </header>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMovieById } from "../../assets/api";
+import css from "./MovieDetailsPage.module.css";
 // import GoBackLink from "../../components/GoBackLink/GoBackLink";
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -23,48 +24,65 @@ const MovieDetailsPage = () => {
     : null;
 
   return (
-    <div>
+    <section className={css.movieDetails}>
       <Link to={linkToBack}>
-        <button>GO BACK</button>
+        <button className={css.LinkGoBack}>GO BACK</button>
       </Link>
       {!movieWithId ? (
         <p>Loading movie details...</p>
       ) : (
-        <div>
-          <h2>{movieWithId.title}</h2>
-          <img
-            src={
-              movieWithId && movieWithId.poster_path
-                ? `https://image.tmdb.org/t/p/w500/${movieWithId.poster_path}`
-                : "notFoundImage"
-            }
-            alt={movieWithId.title}
-            width="350"
-            height="500"
-          />
-          {userScore !== "0" && userScore !== null && (
+        <div className={css.movieDetailsSection}>
+          <section className={css.movieDetailsWrap}>
+            <img
+              className={css.movieDetailsImg}
+              src={
+                movieWithId && movieWithId.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${movieWithId.poster_path}`
+                  : "notFoundImage"
+              }
+              alt={movieWithId.title}
+              width="350"
+              height="500"
+            />
             <div>
-              <p>
-                <span>User Score:</span> {userScore}&#37;
-              </p>{" "}
+              <h2 className={css.movieDetailsTitle}>{movieWithId.title}</h2>
+              {userScore !== "0" && userScore !== null && (
+                <div>
+                  <p>
+                    <span className={css.movieDetailsAccent}>User Score:</span>{" "}
+                    {userScore}&#37;
+                  </p>{" "}
+                </div>
+              )}
+              <div className={css.movieDetailsGenres}>
+                <h3 className={css.movieDetailsText}>Overview: </h3>
+                <p className={css.movieDetailsText}>{movieWithId.overview}</p>
+              </div>
+              <div className={css.movieDetailsGenres}>
+                <h3 className={css.movieDetailsText}>Genres: </h3>
+                <ul className={css.movieDetailsList}>
+                  {movieWithId.genres.map((genre) => (
+                    <li className={css.movieDetailsText} key={genre.id}>
+                      {genre.name},
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          )}
-          <h3>Overview</h3>
-          <p>{movieWithId.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {movieWithId.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-          <nav>
-            <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviewes</Link>
+          </section>
+          <h4>Additional information:</h4>
+          <nav className={css.DetailsNav}>
+            <Link className={css.movieDetailsCast} to="cast">
+              Cast
+            </Link>
+            <Link className={css.movieDetailsReviewes} to="reviews">
+              Reviewes
+            </Link>
           </nav>
           <Outlet />
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

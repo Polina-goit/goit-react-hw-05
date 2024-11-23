@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
 }
 a:hover {
@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: lightskyblue;
 }
 
 h1 {
@@ -65,4 +66,7 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+ul {
+  list-style: none;
 }
