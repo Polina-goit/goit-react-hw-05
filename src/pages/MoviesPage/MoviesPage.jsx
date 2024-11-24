@@ -13,22 +13,22 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [loader, setLoader] = useState(false);
 
-  const request = searchParams.get("query");
-  const currentPage = searchParams.get("page");
+  const request = searchParams.get("query") ?? "";
+  const currentPage = searchParams.get("page") ?? 1;
 
   const handleSubmit = (values, actions) => {
-    setQuery(values.query.toLowerCase().trim());
+    // setQuery(values.query.toLowerCase().trim());
+    setSearchParams({ query: values.query.trim().toLowerCase(), page: 1 });
     actions.resetForm();
   };
 
   useEffect(() => {
-    if (!query) return;
+    // if (!query) return;
     const fetchSearch = async () => {
       try {
         setLoader(true);
-        const { results } = await fetchMovieSearch(query, page);
+        const { results } = await fetchMovieSearch(request, currentPage);
         setSearchMovies(results);
-        setSearchParams(`query=${query}&page=${page}`);
       } catch (err) {
         console.log(err);
       } finally {
@@ -36,14 +36,14 @@ const MoviesPage = () => {
       }
     };
     fetchSearch();
-  }, [query, page, setSearchParams, searchParams]);
-
-  useEffect(() => {
-    if (request && currentPage) {
-      setPage(Number(currentPage));
-      setQuery(request);
-    }
   }, [request, currentPage]);
+
+  //   useEffect(() => {
+  //     if (request && currentPage) {
+  //       setPage(Number(currentPage));
+  //       setQuery(request);
+  //     }
+  //   }, [request, currentPage]);
 
   return (
     <div className={css.moviesPage}>
