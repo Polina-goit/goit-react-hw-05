@@ -7,9 +7,9 @@ import Loader from "../../components/Loader/Loader";
 import css from "./MoviesPage.module.css";
 const MoviesPage = () => {
   const initialValues = { query: "" };
-  const [query, setQuery] = useState("");
+  //   const [query, setQuery] = useState("");
   const [searchMovies, setSearchMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  //   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [loader, setLoader] = useState(false);
 
@@ -23,7 +23,7 @@ const MoviesPage = () => {
   };
 
   useEffect(() => {
-    // if (!query) return;
+    if (!request) return;
     const fetchSearch = async () => {
       try {
         setLoader(true);

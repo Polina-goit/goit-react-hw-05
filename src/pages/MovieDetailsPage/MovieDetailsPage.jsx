@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMovieById } from "../../assets/api";
 import css from "./MovieDetailsPage.module.css";
@@ -8,7 +8,7 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieWithId, setMovieWithID] = useState(null);
   const location = useLocation();
-  const linkToBack = location.state?.from ?? "/";
+  const linkToBack = useRef(location.state?.from ?? "/");
   useEffect(() => {
     const fetchMovieWithId = async () => {
       try {
@@ -26,7 +26,7 @@ const MovieDetailsPage = () => {
 
   return (
     <section className={css.movieDetails}>
-      <Link to={linkToBack}>
+      <Link to={linkToBack.current}>
         <button className={css.LinkGoBack}>GO BACK</button>
       </Link>
       {!movieWithId ? (
